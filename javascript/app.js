@@ -9,25 +9,26 @@ class Cliente {
 
 class UI {
       NuevoCliente(cliente){
-          const listarCliente = document.getElementById('list-clientes');
+          const listarCliente = document.getElementById('lista-clientes');
           const element = document.createElement('div');
           element.innerHTML = `
           <div class="card text-center mb-4">
           <div class="card-body" >
-          <strong>nombre Cliente </strong>: ${product.name}
-          <strong>precio </strong>: ${product.precio}
-          <strong>fecha </strong>: ${product.fecha}
+          <strong>nombre Cliente </strong>: ${cliente.nombre}
+          <strong>precio </strong>: ${cliente.precio}
+          <strong>fecha </strong>: ${cliente.fecha}
 </div>
-</div>
-
-          
-          
-          `;
+</div> `;
         
-      }
+    listarCliente.appendChild(element);
+        }
 
       AñadirCliente(){
 
+      }
+
+      ResetForm(){
+          document.getElementById('cliente-form').reset();
       }
 
       MostrarCliente(){
@@ -43,6 +44,11 @@ document.getElementById('cliente-form').addEventListener('submit',function(e){
       const fecha  = document.getElementById('fecha').value;
 
       const cliente = new Cliente (nombre,precio,fecha); 
+      const ui = new UI();
+      ui.NuevoCliente(cliente);
+      ui.ResetForm();
+
+
       e.preventDefault();
 }
 
